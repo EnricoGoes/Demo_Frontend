@@ -1,45 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastro de Livros</title>
-    <link rel="stylesheet" href="/style.css">
-  </head>
 
-  <body>
-    <a href="/Cadastro" class="btn-cadastrar">Cadastrar Novo</a>
-    <h2>Livros Cadastrados</h2>
-    <table id="tabelaLivros">
-      <thead>
-        <tr>
-          <th>Título</th>
-          <th>Autor</th>
-          <th>Ano</th>
-          <th>Nº Páginas</th>
-          <th>Preço</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="livrosCorpo"></tbody>
-    </table>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Livros</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
 
-    <h2>Gêneros</h2>
-    <table id="tabelaGeneros">
-      <thead>
-        <tr>
-          <th>Nome Gênero</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody id="generosCorpo"></tbody>
-    </table>
+<body>
+  <a href="/Cadastrar" class="btn-cadastrar">Novo Livro</a>
+  <h2>Livros Cadastrados</h2>
+  <table id="tabelaLivros">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Autor</th>
+        <th>Ano</th>
+        <th>Nº Páginas</th>
+        <th>Preço</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="livrosCorpo"></tbody>
+  </table>
 
-    <a href="/CadastroGenero" class="btn-cadastrar">Cadastrar Gênero</a>
+  <a href="/CadastrarGenero" class="btn-cadastrar">Novo Gênero</a>
 
+  <h2>Gêneros Cadastrados</h2>
+  <table id="tabelaGeneros">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="generosCorpo"></tbody>
+  </table>
 
-    <script src="/script.js">
-    </script>
+  <script src="/script.js">
+  </script>
 
-  </body>
+</body>
+
 </html>
