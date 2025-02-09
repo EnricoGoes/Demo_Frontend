@@ -17,14 +17,14 @@ public class livroController {
         return mv;
     }
     
-    @GetMapping("/Cadastro")
+    @GetMapping("/Cadastrar")
     public ModelAndView index1() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("livro");
         return mv;
     }
 
-    @GetMapping("/CadastroGenero")
+    @GetMapping("/CadastrarGenero")
     public ModelAndView index2() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("genero");
