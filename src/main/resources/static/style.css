@@ -1,0 +1,159 @@
+/* Estilos Gerais */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+/* Botão de Cadastrar */
+.btn-cadastrar {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.btn-cadastrar:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos da Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Ações */
+.btn-visualizar, .btn-editar, .btn-deletar {
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-right: 5px;
+  border-radius: 3px;
+}
+
+.btn-visualizar {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-editar {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-deletar {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-visualizar:hover {
+  background-color: #138496;
+}
+
+.btn-editar:hover {
+  background-color: #e0a800;
+}
+
+.btn-deletar:hover {
+  background-color: #c82333;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  table {
+    font-size: 12px;
+  }
+
+  .btn-cadastrar {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+/* Estilos Gerais */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.container {
+  width: 60%;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #e9ecef;
+  width: 100%;
+}
+
+textarea {
+  height: 80px;
+  resize: none;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+button {
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.btn-salvar {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-voltar {
+  background-color: #6c757d;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}

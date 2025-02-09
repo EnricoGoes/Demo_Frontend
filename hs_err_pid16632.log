@@ -1,0 +1,233 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 266338304 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3600), pid=16632, tid=1488
+#
+# JRE version:  (21.0.1+12) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (21.0.1+12-LTS-29, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,server=n,suspend=y,address=localhost:53180 -XX:+ShowCodeDetailsInExceptionMessages br.edu.ifba.demo.frontend.DemoApplication
+
+Host: Intel(R) Core(TM) i3-10100T CPU @ 3.00GHz, 8 cores, 15G,  Windows 10 , 64 bit Build 19041 (10.0.19041.5072)
+Time: Tue Dec  3 08:55:39 2024 Hora oficial do Brasil elapsed time: 0.016942 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001af72b8e7a0):  JavaThread "Unknown thread" [_thread_in_vm, id=1488, stack(0x0000000100600000,0x0000000100700000) (1024K)]
+
+Stack: [0x0000000100600000,0x0000000100700000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6c9029]
+V  [jvm.dll+0x854b81]
+V  [jvm.dll+0x856e5e]
+V  [jvm.dll+0x857543]
+V  [jvm.dll+0x280c06]
+V  [jvm.dll+0x6c5715]
+V  [jvm.dll+0x6ba10a]
+V  [jvm.dll+0x3557ea]
+V  [jvm.dll+0x35d436]
+V  [jvm.dll+0x3ae1be]
+V  [jvm.dll+0x3ae468]
+V  [jvm.dll+0x3291fc]
+V  [jvm.dll+0x329d8b]
+V  [jvm.dll+0x81d179]
+V  [jvm.dll+0x3bb4f1]
+V  [jvm.dll+0x805ae8]
+V  [jvm.dll+0x44effe]
+V  [jvm.dll+0x450901]
+C  [jli.dll+0x52a3]
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17374]
+C  [ntdll.dll+0x4cc91]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffc85ca9b88, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x000001af72c02900 WorkerThread "GC Thread#0"                     [id=15700, stack(0x0000000100700000,0x0000000100800000) (1024K)]
+  0x000001af72c136a0 ConcurrentGCThread "G1 Main Marker"            [id=16716, stack(0x0000000100800000,0x0000000100900000) (1024K)]
+  0x000001af72c14940 WorkerThread "G1 Conc#0"                       [id=13592, stack(0x0000000100900000,0x0000000100a00000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffc8541c2c7]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ffc85d1a6f8] Heap_lock - owner thread: 0x000001af72b8e7a0
+
+Heap address: 0x0000000703e00000, size: 4034 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 4 size 8 Array Of Cards #cards 16 size 48 Howl #buckets 8 coarsen threshold 3686 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 4096
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x0000000703e00000, 0x0000000800000000)
+  region size 2048K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffc85801be9]
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.006 Loaded shared library C:\Program Files\Java\jdk-21\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff6fb9a0000 - 0x00007ff6fb9b0000 	C:\Program Files\Java\jdk-21\bin\java.exe
+0x00007ffd2d130000 - 0x00007ffd2d328000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffd2bd20000 - 0x00007ffd2bde2000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffd2ad00000 - 0x00007ffd2affe000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffd2a820000 - 0x00007ffd2a920000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffd012b0000 - 0x00007ffd012c9000 	C:\Program Files\Java\jdk-21\bin\jli.dll
+0x00007ffd2c010000 - 0x00007ffd2c0c1000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffd014a0000 - 0x00007ffd014bb000 	C:\Program Files\Java\jdk-21\bin\VCRUNTIME140.dll
+0x00007ffd2bc80000 - 0x00007ffd2bd1e000 	C:\Windows\System32\msvcrt.dll
+0x00007ffd2bf70000 - 0x00007ffd2c00f000 	C:\Windows\System32\sechost.dll
+0x00007ffd2b930000 - 0x00007ffd2ba53000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffd2b120000 - 0x00007ffd2b147000 	C:\Windows\System32\bcrypt.dll
+0x00007ffd2ba60000 - 0x00007ffd2bbfd000 	C:\Windows\System32\USER32.dll
+0x00007ffd2aa40000 - 0x00007ffd2aa62000 	C:\Windows\System32\win32u.dll
+0x00007ffd2d0c0000 - 0x00007ffd2d0eb000 	C:\Windows\System32\GDI32.dll
+0x00007ffd2a920000 - 0x00007ffd2aa37000 	C:\Windows\System32\gdi32full.dll
+0x00007ffd02fc0000 - 0x00007ffd0325a000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16\COMCTL32.dll
+0x00007ffd2aa70000 - 0x00007ffd2ab0d000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffd24ca0000 - 0x00007ffd24caa000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffd2bf40000 - 0x00007ffd2bf6f000 	C:\Windows\System32\IMM32.DLL
+0x00007ffd0a5d0000 - 0x00007ffd0a5dc000 	C:\Program Files\Java\jdk-21\bin\vcruntime140_1.dll
+0x00007ffcf0d20000 - 0x00007ffcf0dae000 	C:\Program Files\Java\jdk-21\bin\msvcp140.dll
+0x00007ffc850e0000 - 0x00007ffc85df5000 	C:\Program Files\Java\jdk-21\bin\server\jvm.dll
+0x00007ffd2cc20000 - 0x00007ffd2cc8b000 	C:\Windows\System32\WS2_32.dll
+0x00007ffd2a360000 - 0x00007ffd2a3ab000 	C:\Windows\SYSTEM32\POWRPROF.dll
+0x00007ffd1a990000 - 0x00007ffd1a9b7000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffd2a340000 - 0x00007ffd2a352000 	C:\Windows\SYSTEM32\UMPDC.dll
+0x00007ffd28490000 - 0x00007ffd284a2000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffd07ab0000 - 0x00007ffd07aba000 	C:\Program Files\Java\jdk-21\bin\jimage.dll
+0x00007ffd183e0000 - 0x00007ffd185c4000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffd07110000 - 0x00007ffd07144000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffd2ac70000 - 0x00007ffd2acf2000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffcfe890000 - 0x00007ffcfe8cc000 	C:\Program Files\Java\jdk-21\bin\jdwp.dll
+0x00007ffcfea90000 - 0x00007ffcfeaaf000 	C:\Program Files\Java\jdk-21\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-21\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.4355_none_60b8b9eb71f62e16;C:\Program Files\Java\jdk-21\bin\server
+
+VM Arguments:
+jvm_args: -agentlib:jdwp=transport=dt_socket,server=n,suspend=y,address=localhost:53180 -XX:+ShowCodeDetailsInExceptionMessages 
+java_command: br.edu.ifba.demo.frontend.DemoApplication
+java_class_path (initial): C:\Users\202010070004\Documents\gitHub\Demo_Frontend\target\classes;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter-thymeleaf\3.3.5\spring-boot-starter-thymeleaf-3.3.5.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter\3.3.5\spring-boot-starter-3.3.5.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.3.5\spring-boot-starter-logging-3.3.5.jar;C:\Users\202010070004\.m2\repository\ch\qos\logback\logback-classic\1.5.11\logback-classic-1.5.11.jar;C:\Users\202010070004\.m2\repository\ch\qos\logback\logback-core\1.5.11\logback-core-1.5.11.jar;C:\Users\202010070004\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.23.1\log4j-to-slf4j-2.23.1.jar;C:\Users\202010070004\.m2\repository\org\apache\logging\log4j\log4j-api\2.23.1\log4j-api-2.23.1.jar;C:\Users\202010070004\.m2\repository\org\slf4j\jul-to-slf4j\2.0.16\jul-to-slf4j-2.0.16.jar;C:\Users\202010070004\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\202010070004\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\202010070004\.m2\repository\org\thymeleaf\thymeleaf-spring6\3.1.2.RELEASE\thymeleaf-spring6-3.1.2.RELEASE.jar;C:\Users\202010070004\.m2\repository\org\thymeleaf\thymeleaf\3.1.2.RELEASE\thymeleaf-3.1.2.RELEASE.jar;C:\Users\202010070004\.m2\repository\org\attoparser\attoparser\2.0.7.RELEASE\attoparser-2.0.7.RELEASE.jar;C:\Users\202010070004\.m2\repository\org\unbescape\unbescape\1.1.6.RELEASE\unbescape-1.1.6.RELEASE.jar;C:\Users\202010070004\.m2\repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.3.5\spring-boot-starter-web-3.3.5.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.3.5\spring-boot-starter-json-3.3.5.jar;C:\Users\202010070004\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\202010070004\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\202010070004\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\202010070004\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\202010070004\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\202010070004\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.17.2\jackson-module-parameter-names-2.17.2.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.3.5\spring-boot-starter-tomcat-3.3.5.jar;C:\Users\202010070004\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.31\tomcat-embed-core-10.1.31.jar;C:\Users\202010070004\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.31\tomcat-embed-el-10.1.31.jar;C:\Users\202010070004\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.31\tomcat-embed-websocket-10.1.31.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-web\6.1.14\spring-web-6.1.14.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-beans\6.1.14\spring-beans-6.1.14.jar;C:\Users\202010070004\.m2\repository\io\micrometer\micrometer-observation\1.13.6\micrometer-observation-1.13.6.jar;C:\Users\202010070004\.m2\repository\io\micrometer\micrometer-commons\1.13.6\micrometer-commons-1.13.6.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-webmvc\6.1.14\spring-webmvc-6.1.14.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-aop\6.1.14\spring-aop-6.1.14.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-context\6.1.14\spring-context-6.1.14.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-expression\6.1.14\spring-expression-6.1.14.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter-web-services\3.3.5\spring-boot-starter-web-services-3.3.5.jar;C:\Users\202010070004\.m2\repository\com\sun\xml\messaging\saaj\saaj-impl\3.0.4\saaj-impl-3.0.4.jar;C:\Users\202010070004\.m2\repository\jakarta\xml\soap\jakarta.xml.soap-api\3.0.2\jakarta.xml.soap-api-3.0.2.jar;C:\Users\202010070004\.m2\repository\org\jvnet\staxex\stax-ex\2.1.0\stax-ex-2.1.0.jar;C:\Users\202010070004\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\202010070004\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\202010070004\.m2\repository\jakarta\xml\ws\jakarta.xml.ws-api\4.0.2\jakarta.xml.ws-api-4.0.2.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-oxm\6.1.14\spring-oxm-6.1.14.jar;C:\Users\202010070004\.m2\repository\org\springframework\ws\spring-ws-core\4.0.11\spring-ws-core-4.0.11.jar;C:\Users\202010070004\.m2\repository\org\springframework\ws\spring-xml\4.0.11\spring-xml-4.0.11.jar;C:\Users\202010070004\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\202010070004\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\202010070004\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\202010070004\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter-webflux\3.3.5\spring-boot-starter-webflux-3.3.5.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-starter-reactor-netty\3.3.5\spring-boot-starter-reactor-netty-3.3.5.jar;C:\Users\202010070004\.m2\repository\io\projectreactor\netty\reactor-netty-http\1.1.23\reactor-netty-http-1.1.23.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-codec-http\4.1.114.Final\netty-codec-http-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-common\4.1.114.Final\netty-common-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-buffer\4.1.114.Final\netty-buffer-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-transport\4.1.114.Final\netty-transport-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-codec\4.1.114.Final\netty-codec-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-handler\4.1.114.Final\netty-handler-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-codec-http2\4.1.114.Final\netty-codec-http2-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-resolver-dns\4.1.114.Final\netty-resolver-dns-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-resolver\4.1.114.Final\netty-resolver-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-codec-dns\4.1.114.Final\netty-codec-dns-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-resolver-dns-native-macos\4.1.114.Final\netty-resolver-dns-native-macos-4.1.114.Final-osx-x86_64.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-resolver-dns-classes-macos\4.1.114.Final\netty-resolver-dns-classes-macos-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-transport-native-epoll\4.1.114.Final\netty-transport-native-epoll-4.1.114.Final-linux-x86_64.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-transport-native-unix-common\4.1.114.Final\netty-transport-native-unix-common-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-transport-classes-epoll\4.1.114.Final\netty-transport-classes-epoll-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\projectreactor\netty\reactor-netty-core\1.1.23\reactor-netty-core-1.1.23.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-handler-proxy\4.1.114.Final\netty-handler-proxy-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\io\netty\netty-codec-socks\4.1.114.Final\netty-codec-socks-4.1.114.Final.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-webflux\6.1.14\spring-webflux-6.1.14.jar;C:\Users\202010070004\.m2\repository\org\springframework\session\spring-session-core\3.3.3\spring-session-core-3.3.3.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-jcl\6.1.14\spring-jcl-6.1.14.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-devtools\3.3.5\spring-boot-devtools-3.3.5.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot\3.3.5\spring-boot-3.3.5.jar;C:\Users\202010070004\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.3.5\spring-boot-autoconfigure-3.3.5.jar;C:\Users\202010070004\.m2\repository\org\projectlombok\lombok\1.18.34\lombok-1.18.34.jar;C:\Users\202010070004\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\202010070004\.m2\repository\org\springframework\spring-core\6.1.14\spring-core-6.1.14.jar;C:\Users\202010070004\.m2\repository\io\projectreactor\reactor-core\3.6.11\reactor-core-3.6.11.jar;C:\Users\202010070004\.m2\repository\org\reactivestreams\reactive-streams\1.0.4\reactive-streams-1.0.4.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 2097152                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 266338304                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4229955584                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 2097152                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool ShowCodeDetailsInExceptionMessages       = true                                   {manageable} {command line}
+   size_t SoftMaxHeapSize                          = 4229955584                             {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+PATH=C:\Program Files\Microsoft MPI\Bin\;C:\Program Files\Python310\Scripts\;C:\Program Files\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Microsoft VS Code\bin;C:\Users\202010070004\AppData\Local\Microsoft\WindowsApps;C:\Users\202010070004\AppData\Local\GitHubDesktop\bin
+USERNAME=202010070004
+LANG=en_US.UTF-8
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 165 Stepping 3, GenuineIntel
+TMP=C:\Users\202010~4\AppData\Local\Temp
+TEMP=C:\Users\202010~4\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.5072)
+OS uptime: 1 days 0:11 hours
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 165 stepping 3 microcode 0xea, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt, rdtscp, f16c
+Processor Information for all 8 processors :
+  Max Mhz: 3000, Current Mhz: 3000, Mhz Limit: 3000
+
+Memory: 4k page, system-wide physical 16131M (875M free)
+TotalPageFile size 19638M (AvailPageFile size 121M)
+current process WorkingSet (physical memory assigned to process): 11M, peak: 11M
+current process commit charge ("private bytes"): 60M, peak: 314M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (21.0.1+12-LTS-29) for windows-amd64 JRE (21.0.1+12-LTS-29), built on 2023-10-05T13:27:09Z by "mach5one" with MS VC++ 17.1 (VS2022)
+
+END.

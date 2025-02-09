@@ -1,76 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Livros</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
 
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
-</head>
-<body>
-    <div class="container">
-        <a th:href="@{/livros/novo}" class="btn btn-primary mb-3">
-            Cadastrar Novo
-        </a>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>Titulo</th>
-                <th>Autor</th>
-                <th>Ano</th>
-                <th>Nr Paginas</th>
-                <th>Preço</th>
-                <th>Ações</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr th:each="livro : ${livros}">
-                    <!-- Exibindo os atributos do produto -->
-                    <td th:text="${livro.titulo}"></td>
-                    <td th:text="${livro.autor}"></td>
-                    <td th:text="${livro.ano_publicacao}"></td>
-                    <td th:text="${livro.num_paginas}"></td>
-                    <td th:text="${livro.preco}"></td>
-                    <td>
-                        <!-- 
-                        <form action="\livro\getById\${livro.id_livro}" method="get" class="d-inline">
-                            <button type="submit" class="btn btn-primary btn-sm">Visualizar</button>
-                        </form>
-                        <form action="" method="get" class="d-inline">
-                            <button type="submit" class="btn btn-warning btn-sm">Editar</button>
-                        </form>
-                        <form action="" method="get" class="d-inline">
-                            <button type="submit" class="btn btn-danger btn-sm">Deletar</button>
-                        </form> -->
-                        <form th:action="@{/livros/acao}" method="post">
+  <body>
+    <a href="/Cadastro" class="btn-cadastrar">Cadastrar Novo</a>
+    <h2>Livros Cadastrados</h2>
+    <table id="tabelaLivros">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Ano</th>
+          <th>Nº Páginas</th>
+          <th>Preço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="livrosCorpo"></tbody>
+    </table>
 
-                            <input type="hidden" name="id" th:value="${livro.id_livro}"/>
-                        
-                            <a class="btn btn-primary btn-sm"
-                                th:href="@{/livros/view/{id}(id=${livro.id_livro})}">
-                                Visualizar
-                            </a>
+    <h2>Gêneros</h2>
+    <table id="tabelaGeneros">
+      <thead>
+        <tr>
+          <th>Nome Gênero</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="generosCorpo"></tbody>
+    </table>
 
-                            <a class="btn btn-warning btn-sm"
-                                th:href="@{/livros/edit/{id}(id=${livro.id_livro})}">
-                                Editar
-                            </a>
-                        
-                            <a class="btn btn-sm btn-danger"
-                                th:href="@{/livros/delete/{id}(id=${livro.id_livro})}"
-                                onclick="return confirm('Tem certeza que deseja excluir?');">
-                                Deletar
-                            </a>
-                        
-                            <input type="hidden" name="_method" id="_method" value="" />
-                        </form>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <a href="/CadastroGenero" class="btn-cadastrar">Cadastrar Gênero</a>
 
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-</body>
+
+    <script src="/script.js">
+    </script>
+
+  </body>
 </html>
