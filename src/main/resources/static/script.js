@@ -1,3 +1,5 @@
+console.log("Script carregado!");
+
 const API_URL = "http://localhost:8081/livro";
 const API_URL2 = "http://localhost:8081/genero";
 
@@ -43,17 +45,33 @@ function renderizarTabela(dados, tipo) {
 }
 
 async function getLivros() {
+    console.log("getLivros() foi chamada!");
     try {
-        const [livros, generos] = await Promise.all([
-            fetchData(`${API_URL}/listall`),
-            fetchData(`${API_URL2}/listall`)
-        ]);
+        const respostaLivros = await fetch(`${API_URL}/listall`);
+        console.log("Resposta Livros:", respostaLivros);
+
+        const respostaGeneros = await fetch(`${API_URL2}/listall`);
+        console.log("Resposta Gêneros:", respostaGeneros);
+
+        if (!respostaLivros.ok || !respostaGeneros.ok) {
+            throw new Error("Erro ao buscar dados do servidor");
+        }
+
+        const livros = await respostaLivros.json();
+        console.log("Dados dos Livros:", livros);
+
+        const generos = await respostaGeneros.json();
+        console.log("Dados dos Gêneros:", generos);
 
         renderizarTabela(livros, "livros");
         renderizarTabela(generos, "generos");
 
     } catch (erro) {
         console.error("Erro ao carregar dados:", erro);
-        alert("Falha ao carregar livros e gêneros!");
     }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOM carregado! Chamando getLivros...");
+    getLivros();
+});
