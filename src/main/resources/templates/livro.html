@@ -159,7 +159,7 @@
                     sinopse
                 };
 
-                try {
+                try {  
                     const response = await fetch(`http://localhost:8081/livro/${id}`, {
                         method: "PUT",
                         headers: {
@@ -177,6 +177,52 @@
                     console.error("Erro ao atualizar livro:", error);
                 }
 
+            }
+
+            async function cadastrarLivro(){
+                const titulo = document.getElementById("titulo").value;
+                const autor = document.getElementById("autor").value;
+                const ano = document.getElementById("ano").value;
+                const editora = document.getElementById("editora").value;
+                const genero = document.getElementById("genero").value;
+                const isbn = document.getElementById("isbn").value;
+                const paginas = document.getElementById("paginas").value;
+                const idioma = document.getElementById("idioma").value;
+                const data = document.getElementById("data").value;
+                const preco = document.getElementById("preco").value;
+                const sinopse = document.getElementById("sinopse").value;
+
+                const livro = {
+                    titulo,
+                    autor,
+                    anoPublicacao: ano,
+                    editora,
+                    genero,
+                    isbn,
+                    numPaginas: paginas,
+                    idioma,
+                    dataCadastro: data,
+                    preco,
+                    sinopse
+                };
+
+                try {
+                    const response = await fetch("http://localhost:8081/livro", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(livro)
+                    });
+
+                    if (response.ok) {
+                        window.location.href = "/";
+                    } else {
+                        console.error("Erro ao cadastrar livro:", response.status);
+                    }
+                } catch (error) {
+                    console.error("Erro ao cadastrar livro:", error);
+                }
             }
 
             document.getElementById("btnSalvar").addEventListener("click", async function () {
