@@ -109,13 +109,13 @@ async function addLivro() {
         titulo: document.getElementById("titulo").value,
         autor: document.getElementById("autor").value,
         isbn: document.getElementById("isbn").value,
-        anoPublicacao: document.getElementById("ano_publicacao").value,
+        ano_publicacao: document.getElementById("ano_publicacao").value,
         editora: document.getElementById("editora").value,
         sinopse: document.getElementById("sinopse").value,
         idioma: document.getElementById("idioma").value,
         preco: document.getElementById("preco").value,
         genero: document.getElementById("genero").value,
-        numeroPaginas: document.getElementById("num_paginas").value,
+        numero_paginas: document.getElementById("num_paginas").value,
     };
 
     try {
@@ -139,7 +139,7 @@ async function addLivro() {
 
 async function informações(id) {
     try {
-        const response = await fetch(`${API_URL}/${id}`);
+        const response = await fetch(`${API_URL}/getById/${id}`);
 
         if (!response.ok) throw new Error("Falha ao buscar informações do livro");
 
