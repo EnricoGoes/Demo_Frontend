@@ -104,6 +104,101 @@ async function getGeneros() {
     }
 }
 
+async function addLivro() {
+    const livro = {
+        titulo: document.getElementById("titulo").value,
+        autor: document.getElementById("autor").value,
+        isbn: document.getElementById("isbn").value,
+        anoPublicacao: document.getElementById("ano_publicacao").value,
+        editora: document.getElementById("editora").value,
+        sinopse: document.getElementById("sinopse").value,
+        idioma: document.getElementById("idioma").value,
+        preco: document.getElementById("preco").value,
+        genero: document.getElementById("genero").value,
+        numeroPaginas: document.getElementById("num_paginas").value,
+    };
+
+    try {
+        const resposta = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(livro),
+        });
+
+        if (!resposta.ok) throw new Error("Falha no cadastro do livro");
+
+        alert("Livro cadastrado com sucesso!");
+        carregarLivros();
+    } catch (erro) {
+        console.error("Erro ao cadastrar livro:", erro);
+        alert("Erro ao cadastrar o livro. Verifique os dados e tente novamente.");
+    }
+}
+
+async function informações(id) {
+    try {
+        const response = await fetch(`${API_URL}/${id}`);
+
+        if (!response.ok) throw new Error("Falha ao buscar informações do livro");
+
+        const livro = await response.json();
+        console.log(livro);
+
+        document.getElementById("idLivroAtualizar").value = id;
+        document.getElementById("tituloAtualizar").value = livro.titulo;
+        document.getElementById("autorAtualizar").value = livro.autor;
+        document.getElementById("generoAtualizar").value = livro.genero;
+        document.getElementById("idiomaAtualizar").value = livro.idioma;
+        document.getElementById("precoAtualizar").value = livro.preco;
+        document.getElementById("num_paginasAtualizar").value = livro.num_paginas;
+        document.getElementById("editoraAtualizar").value = livro.editora;
+        document.getElementById("ano_publicacaoAtualizar").value = livro.ano_publicacao;
+        document.getElementById("isbnAtualizar").value = livro.isbn;
+        document.getElementById("sinopseAtualizar").value = livro.sinopse;
+    } catch (erro) {
+        console.error("Erro ao preencher formulário de atualização:", erro);
+        alert("Erro ao carregar os dados do livro. Tente novamente.");
+    }
+}
+
+async function atualizarLivro() {
+    const livroAtualizado = {
+        id_livro: document.getElementById("idLivroAtualizar").value,
+        titulo: document.getElementById("tituloAtualizar").value,
+        autor: document.getElementById("autorAtualizar").value,
+        genero: document.getElementById("generoAtualizar").value,
+        idioma: document.getElementById("idiomaAtualizar").value,
+        preco: document.getElementById("precoAtualizar").value,
+        num_paginas: document.getElementById("num_paginasAtualizar").value,
+        editora: document.getElementById("editoraAtualizar").value,
+        ano_publicacao: document.getElementById("ano_publicacaoAtualizar").value,
+        isbn: document.getElementById("isbnAtualizar").value,
+        sinopse: document.getElementById("sinopseAtualizar").value,
+    };
+
+    const idLivro = livroAtualizado.id_livro;
+
+    try {
+        const response = await fetch(`${API_URL}/${idLivro}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(livroAtualizado),
+        });
+
+        if (!response.ok) throw new Error("Falha ao atualizar o livro");
+
+        alert("Livro atualizado com sucesso!");
+        carregarLivros();
+    } catch (erro) {
+        console.error("Erro ao atualizar livro:", erro);
+        alert("Erro ao atualizar o livro. Verifique os dados e tente novamente.");
+    }
+}
+
 // Função para deletar livro com confirmação
 async function deletarLivro(id) {
     if (!confirm("Tem certeza que deseja deletar este livro?")) {
@@ -148,7 +243,28 @@ async function deletarGenero(id) {
     }
 }
 
+function navegar(rota, id, modo) {
+    const url = new URL(window.location.origin + rota);
+    url.searchParams.append("id", id);
+    url.searchParams.append("modo", modo);
+    window.location.href = url.toString();
+}
 
+function mostrarDetalhes(id) {
+    navegar("/Cadastro", id, "visualizar");
+}
+
+function mostrarDetalhes2(id) {
+    navegar("/CadastroGenero", id, "visualizar");
+}
+
+function mostrarEditar(id) {
+    navegar("/Cadastro", id, "editar");
+}
+
+function mostrarEditar2(id) {
+    navegar("/CadastroGenero", id, "editar");
+}
 
 // Carrega os dados quando a página for carregada
 document.addEventListener("DOMContentLoaded", () => {
