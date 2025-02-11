@@ -70,10 +70,46 @@
             const params = new URLSearchParams(window.location.search);
             const id = params.get("id");
             const modo = params.get("modo");
+            const API_URL = "http://localhost:8081/livro";
 
-            
+            await getGeneros();
+
+            async function getGeneros() {
+                try {
+                    const response = await fetch("http://localhost:8081/genero/listall");
+                    const generos = await response.json();
+                    console.log("Gêneros:", generos);
+
+                    const selectGenero = document.getElementById("genero");
+                    generos.forEach(genero => {
+                        const option = document.createElement("option");
+                        option.value = genero.id;
+                        option.textContent = genero.nome;
+                        selectGenero.appendChild(option);
+                    });
+                } catch (error) {
+                    console.error("Erro ao buscar os gêneros:", error);
+                }
+            }
+
+            document.getElementById("btnSalvar").addEventListener("click", async function () {
+                if (id) {
+                    await atualizarLivro();
+                } else {
+                    await cadastrarLivro();
+                }
+            });
+
+            if (modo === "visualizar") {
+                document.querySelectorAll("input, select, textarea").forEach((item) => {
+                    item.setAttribute("readonly", true);
+                    item.setAttribute("disabled", true);
+                });
+                document.getElementById("btnSalvar").style.display = "none"; // Esconde botão de salvar
+            }
+
         });
-        
+
     </script>
 
 </body>
