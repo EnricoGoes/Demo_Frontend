@@ -148,6 +148,8 @@ async function deletarGenero(id) {
     }
 }
 
+
+
 // Carrega os dados quando a página for carregada
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM carregado! Chamando getLivros e getGeneros...");
