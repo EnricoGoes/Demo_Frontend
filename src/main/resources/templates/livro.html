@@ -69,8 +69,7 @@
         document.addEventListener("DOMContentLoaded", async function () {
             const params = new URLSearchParams(window.location.search);
             const id = params.get("id");
-            const modo = params.get("modo");
-            const API_URL = "http://localhost:8081/livro";
+            const modo = params.get("modo") || "";
 
             await getGeneros();
 
@@ -89,97 +88,6 @@
                     });
                 } catch (error) {
                     console.error("Erro ao buscar os gêneros:", error);
-                }
-            }
-
-            async function cadastrarLivro() {
-                const livro = {
-                    titulo: document.getElementById("titulo").value,
-                    autor: document.getElementById("autor").value,
-                    anoPublicacao: document.getElementById("ano").value,
-                    editora: document.getElementById("editora").value,
-                    genero: { id: document.getElementById("genero").value },
-                    isbn: document.getElementById("isbn").value,
-                    numPaginas: document.getElementById("paginas").value,
-                    idioma: document.getElementById("idioma").value,
-                    dataCadastro: document.getElementById("data").value,
-                    preco: document.getElementById("preco").value,
-                    sinopse: document.getElementById("sinopse").value
-                };
-
-                try {
-                    const response = await fetch(API_URL, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(livro)
-                    });
-
-                    if (response.ok) {
-                        alert("Livro cadastrado com sucesso!");
-                        window.location.href = "/";
-                    } else {
-                        console.error("Erro ao cadastrar livro:", response.status);
-                    }
-                } catch (error) {
-                    console.error("Erro ao cadastrar livro:", error);
-                }
-            }
-
-            async function atualizarLivro() {
-                const livro = {
-                    titulo: document.getElementById("titulo").value,
-                    autor: document.getElementById("autor").value,
-                    anoPublicacao: document.getElementById("ano").value,
-                    editora: document.getElementById("editora").value,
-                    genero: { id: document.getElementById("genero").value },
-                    isbn: document.getElementById("isbn").value,
-                    numPaginas: document.getElementById("paginas").value,
-                    idioma: document.getElementById("idioma").value,
-                    dataCadastro: document.getElementById("data").value,
-                    preco: document.getElementById("preco").value,
-                    sinopse: document.getElementById("sinopse").value
-                };
-
-                try {
-                    const response = await fetch(`${API_URL}/${id}`, {
-                        method: "PUT",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(livro)
-                    });
-
-                    if (response.ok) {
-                        alert("Livro atualizado com sucesso!");
-                        window.location.href = "/";
-                    } else {
-                        console.error("Erro ao atualizar livro:", response.status);
-                    }
-                } catch (error) {
-                    console.error("Erro ao atualizar livro:", error);
-                }
-            }
-
-            async function getLivro(id) {
-                try {
-                    const response = await fetch(`${API_URL}/${id}`);
-                    if (!response.ok) throw new Error("Erro ao buscar livro");
-
-                    const livro = await response.json();
-                    console.log("Dados do Livro:", livro);
-
-                    document.getElementById("titulo").value = livro.titulo;
-                    document.getElementById("autor").value = livro.autor;
-                    document.getElementById("ano").value = livro.anoPublicacao;
-                    document.getElementById("editora").value = livro.editora;
-                    document.getElementById("genero").value = livro.genero.id;
-                    document.getElementById("isbn").value = livro.isbn;
-                    document.getElementById("paginas").value = livro.numPaginas;
-                    document.getElementById("idioma").value = livro.idioma;
-                    document.getElementById("preco").value = livro.preco;
-                    document.getElementById("sinopse").value = livro.sinopse;
-                    document.getElementById("data").value = livro.dataCadastro;
-
-                } catch (error) {
-                    console.error("Erro ao buscar o livro:", error);
                 }
             }
 
