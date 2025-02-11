@@ -71,8 +71,6 @@
             const id = params.get("id");
             const modo = params.get("modo") || "";
 
-            await getGeneros();
-
             async function getGeneros() {
                 try {
                     const response = await fetch("http://localhost:8081/genero/listall");
@@ -101,18 +99,15 @@
                     const livro = await response.json();
                     console.log("Dados do livro recebidos:", livro);
 
-                    // Pegando o ID do gênero corretamente
                     let generoId = livro.genero ? livro.genero.idGenero : "";
 
-                    // Aguarda o carregamento dos gêneros antes de definir o valor
                     await getGeneros();
 
-                    // Define o ID do gênero no `<select>`
                     const selectGenero = document.getElementById("genero");
                     if ([...selectGenero.options].some(option => option.value == generoId)) {
-                        selectGenero.value = generoId; // Agora o gênero será selecionado corretamente
+                        selectGenero.value = generoId;
                     } else {
-                        console.warn("⚠️ O gênero do livro não está na lista de opções.");
+                        console.warn("O gênero do livro não está na lista de opções.");
                     }
 
                     document.getElementById("titulo").value = livro.titulo;
@@ -131,7 +126,7 @@
                 }
             }
 
-            async function atualizarLivro() { // Função para atualizar um livro
+            async function atualizarLivro() {
 
                 const titulo = document.getElementById("titulo").value;
                 const autor = document.getElementById("autor").value;
