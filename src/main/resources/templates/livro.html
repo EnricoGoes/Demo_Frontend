@@ -103,7 +103,6 @@
             if (modo === "visualizar") {
                 document.querySelectorAll("input, select, textarea").forEach((item) => {
                     item.setAttribute("readonly", true);
-                    item.setAttribute("disabled", true);
                 });
                 document.getElementById("btnSalvar").style.display = "none"; // Esconde botão de salvar
             }

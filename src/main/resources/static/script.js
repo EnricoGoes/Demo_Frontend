@@ -130,7 +130,7 @@ async function addLivro() {
         if (!resposta.ok) throw new Error("Falha no cadastro do livro");
 
         alert("Livro cadastrado com sucesso!");
-        carregarLivros();
+        getLivros();
     } catch (erro) {
         console.error("Erro ao cadastrar livro:", erro);
         alert("Erro ao cadastrar o livro. Verifique os dados e tente novamente.");
@@ -267,8 +267,8 @@ function verEditarGenero(id) {
 }
 
 // Carrega os dados quando a página for carregada
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     console.log("DOM carregado! Chamando getLivros e getGeneros...");
-    getLivros();
-    getGeneros();
+    await getLivros();
+    await getGeneros();
 });

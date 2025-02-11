@@ -27,7 +27,7 @@
         document.addEventListener("DOMContentLoaded", async function () {
             const params = new URLSearchParams(window.location.search);
             const id = params.get("id");
-            const modo = params.get("modo");
+            const modo = params.get("modo") || "";
 
             async function getGenero(id) {
                 try {
@@ -95,7 +95,7 @@
                 }
             });
 
-            if (modo !== "novo") {
+            if (id && modo !== "novo") {
                 await getGenero(id);
             }
 
