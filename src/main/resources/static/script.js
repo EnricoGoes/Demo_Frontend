@@ -250,20 +250,20 @@ function navegar(rota, id, modo) {
     window.location.href = url.toString();
 }
 
-function mostrarDetalhes(id) {
-    navegar("/Cadastro", id, "visualizar");
+function verDetalhesLivro(id) {
+    navegar("/Cadastrar", id, "visualizar");
 }
 
-function mostrarDetalhes2(id) {
-    navegar("/CadastroGenero", id, "visualizar");
+function verDetalhesGenero(id) {
+    navegar("/CadastrarGenero", id, "visualizar");
 }
 
-function mostrarEditar(id) {
-    navegar("/Cadastro", id, "editar");
+function verEditarLivro(id) {
+    navegar("/Cadastrar", id, "editar");
 }
 
-function mostrarEditar2(id) {
-    navegar("/CadastroGenero", id, "editar");
+function verEditarGenero(id) {
+    navegar("/CadastrarGenero", id, "editar");
 }
 
 // Carrega os dados quando a página for carregada
