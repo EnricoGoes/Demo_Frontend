@@ -24,8 +24,87 @@
     </div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
+            const modo = params.get("modo");
 
-        
+            async function getGenero(id) {
+                try {
+                    const response = await fetch(`http://localhost:8081/genero/${id}`);
+                    const genero = await response.json();
+                    console.log("Dados do gênero:", genero);
+
+                    if (genero && genero.nome) {
+                        document.getElementById("nome").value = genero.nome;
+                    } else {
+                        console.error("Erro: Nome do gênero não encontrado!");
+                    }
+                } catch (error) {
+                    console.error("Erro ao buscar o gênero:", error);
+                }
+            }
+
+            async function addGenero() {
+                const nome = document.getElementById("nome").value;
+                const genero = { nome };
+                try {
+                    const response = await fetch("http://localhost:8081/genero", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(genero)
+                    });
+                    if (response.ok) {
+                        window.location.href = "/";
+                    } else {
+                        console.error("Erro ao adicionar gênero:", response.status);
+                    }
+                } catch (erro) {
+                    console.error("Erro ao adicionar gênero:", erro);
+                }
+            }
+
+            async function atualizarGenero(id) {
+                const nome = document.getElementById("nome").value;
+                const genero = { nome };
+                try {
+                    const response = await fetch(`http://localhost:8081/genero/${id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(genero)
+                    });
+                    if (response.ok) {
+                        window.location.href = "/";
+                    } else {
+                        console.error("Erro ao atualizar gênero:", response.status);
+                    }
+                } catch (erro) {
+                    console.error("Erro ao atualizar gênero:", erro);
+                }
+            }
+
+            document.getElementById("btnSalvar").addEventListener("click", async function () {
+                if (id) {
+                    await atualizarGenero(id);
+                } else {
+                    await addGenero();
+                }
+            });
+
+            if (modo !== "novo") {
+                await getGenero(id);
+            }
+
+            if (modo === "visualizar") {
+                document.getElementById("nome").setAttribute("readonly", true);
+                document.getElementById("btnSalvar").style.display = "none";
+            }
+
+        });
     </script>
 </body>
 
