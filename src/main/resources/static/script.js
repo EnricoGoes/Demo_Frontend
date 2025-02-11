@@ -192,7 +192,7 @@ async function atualizarLivro() {
         if (!response.ok) throw new Error("Falha ao atualizar o livro");
 
         alert("Livro atualizado com sucesso!");
-        carregarLivros();
+        getLivros();
     } catch (erro) {
         console.error("Erro ao atualizar livro:", erro);
         alert("Erro ao atualizar o livro. Verifique os dados e tente novamente.");
