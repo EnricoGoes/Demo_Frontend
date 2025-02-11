@@ -91,6 +91,53 @@
                 }
             }
 
+            async function atualizarLivro() { // Função para atualizar um livro
+                const titulo = document.getElementById("titulo").value;
+                const autor = document.getElementById("autor").value;
+                const ano = document.getElementById("ano").value;
+                const editora = document.getElementById("editora").value;
+                const genero = document.getElementById("genero").value;
+                const isbn = document.getElementById("isbn").value;
+                const paginas = document.getElementById("paginas").value;
+                const idioma = document.getElementById("idioma").value;
+                const data = document.getElementById("data").value;
+                const preco = document.getElementById("preco").value;
+                const sinopse = document.getElementById("sinopse").value;
+
+                const livro = {
+                    titulo,
+                    autor,
+                    ano,
+                    editora,
+                    genero,
+                    isbn,
+                    paginas,
+                    idioma,
+                    data,
+                    preco,
+                    sinopse
+                };
+
+                try {
+                    const response = await fetch(`http://localhost:8081/livro/${id}`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(livro)
+                    });
+
+                    if (response.ok) {
+                        window.location.href = "/";
+                    } else {
+                        console.error("Erro ao atualizar livro:", response.status);
+                    }
+                } catch (error) {
+                    console.error("Erro ao atualizar livro:", error);
+                }
+                
+            }
+
             document.getElementById("btnSalvar").addEventListener("click", async function () {
                 if (id) {
                     await atualizarLivro();
@@ -98,10 +145,6 @@
                     await cadastrarLivro();
                 }
             });
-
-            if (id) {
-                await getLivro(id);
-            }
 
             if (modo === "visualizar") {
                 document.querySelectorAll("input, select, textarea").forEach((item) => {
