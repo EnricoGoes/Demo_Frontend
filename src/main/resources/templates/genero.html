@@ -35,8 +35,8 @@
                     const genero = await response.json();
                     console.log("Dados do gênero:", genero);
 
-                    if (genero && genero.nome) {
-                        document.getElementById("nome").value = genero.nome;
+                    if (genero && genero.generoNome) {
+                        document.getElementById("nome").value = genero.generoNome;
                     } else {
                         console.error("Erro: Nome do gênero não encontrado!");
                     }
