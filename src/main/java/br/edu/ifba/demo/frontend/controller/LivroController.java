@@ -15,7 +15,7 @@ public class LivroController {
         mv.setViewName("index");
         return mv;
     }
-    
+
     @GetMapping("/Cadastrar")
     public ModelAndView index1() {
         ModelAndView mv = new ModelAndView();

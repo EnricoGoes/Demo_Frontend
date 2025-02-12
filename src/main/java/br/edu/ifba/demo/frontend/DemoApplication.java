@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class DemoApplication {
 
 	@Bean
-	public WebClient webClient(WebClient.Builder builder){
+	public WebClient webClient(WebClient.Builder builder) {
 		String urlBackEnd = "http://localhost:8081";
 		return builder
 				.baseUrl(urlBackEnd)
