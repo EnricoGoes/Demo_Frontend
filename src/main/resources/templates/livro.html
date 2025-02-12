@@ -142,18 +142,18 @@
                 const preco = document.getElementById("preco").value;
                 const sinopse = document.getElementById("sinopse").value;
 
-                const livro = {
-                    titulo,
-                    autor,
-                    anoPublicacao: ano,
-                    editora,
-                    genero,
-                    isbn,
-                    numPaginas: paginas,
-                    idioma,
-                    dataCadastro: data,
-                    preco,
-                    sinopse
+                let livro = {
+                    titulo: document.getElementById("titulo").value.trim(),
+                    autor: document.getElementById("autor").value.trim(),
+                    editora: document.getElementById("editora").value.trim(),
+                    anoPublicacao: parseInt(document.getElementById("ano").value) || null,
+                    genero: { idGenero: parseInt(document.getElementById("genero").value) || null }, // Pegando o ID do gênero corretamente
+                    isbn: document.getElementById("isbn").value.trim(),
+                    numPaginas: parseInt(document.getElementById("paginas").value) || null,
+                    sinopse: document.getElementById("sinopse").value.trim(),
+                    idioma: document.getElementById("idioma").value.trim(),
+                    dataCadastro: document.getElementById("data").value.trim(),
+                    preco: parseFloat(document.getElementById("preco").value) || null
                 };
 
                 try {
