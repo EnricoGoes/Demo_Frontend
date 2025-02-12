@@ -156,7 +156,7 @@
                     sinopse
                 };
 
-                try {  
+                try {
                     const response = await fetch(`http://localhost:8081/livro/${id}`, {
                         method: "PUT",
                         headers: {
@@ -176,49 +176,52 @@
 
             }
 
-            async function cadastrarLivro(){
-                const titulo = document.getElementById("titulo").value;
-                const autor = document.getElementById("autor").value;
-                const ano = document.getElementById("ano").value;
-                const editora = document.getElementById("editora").value;
-                const genero = document.getElementById("genero").value;
-                const isbn = document.getElementById("isbn").value;
-                const paginas = document.getElementById("paginas").value;
-                const idioma = document.getElementById("idioma").value;
-                const data = document.getElementById("data").value;
-                const preco = document.getElementById("preco").value;
-                const sinopse = document.getElementById("sinopse").value;
+            async function cadastrarLivro() {
+                const API_URL = "http://localhost:8081/livro";
 
-                const livro = {
-                    titulo,
-                    autor,
-                    anoPublicacao: ano,
-                    editora,
-                    genero,
-                    isbn,
-                    numPaginas: paginas,
-                    idioma,
-                    dataCadastro: data,
-                    preco,
-                    sinopse
+                // Pegando os valores do formulário
+                let livro = {
+                    titulo: document.getElementById("titulo").value.trim(),
+                    autor: document.getElementById("autor").value.trim(),
+                    editora: document.getElementById("editora").value.trim(),
+                    anoPublicacao: parseInt(document.getElementById("ano").value) || null,
+                    genero: { idGenero: parseInt(document.getElementById("genero").value) || null }, // Pegando o ID do gênero corretamente
+                    isbn: document.getElementById("isbn").value.trim(),
+                    numPaginas: parseInt(document.getElementById("paginas").value) || null,
+                    sinopse: document.getElementById("sinopse").value.trim(),
+                    idioma: document.getElementById("idioma").value.trim(),
+                    dataCadastro: document.getElementById("data").value.trim(),
+                    preco: parseFloat(document.getElementById("preco").value) || null
                 };
 
+                // Verificando se o gênero foi selecionado corretamente
+                if (!livro.genero.idGenero) {
+                    console.error("ERRO: Nenhum gênero foi selecionado!");
+                    alert("Por favor, selecione um gênero válido.");
+                    return;
+                }
+
+                // Depuração: Exibir o JSON antes de enviar
+                console.log("JSON enviado para a API:", JSON.stringify(livro, null, 2));
+
                 try {
-                    const response = await fetch("http://localhost:8081/livro", {
+                    const response = await fetch(API_URL, {
                         method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(livro)
                     });
 
-                    if (response.ok) {
-                        window.location.href = "/";
-                    } else {
-                        console.error("Erro ao cadastrar livro:", response.status);
+                    if (!response.ok) {
+                        const erroTexto = await response.text();
+                        throw new Error(`Erro ao cadastrar livro: ${erroTexto}`);
                     }
+
+                    alert("Livro cadastrado com sucesso!");
+                    window.location.href = "/"; // Redireciona após o cadastro
+
                 } catch (error) {
-                    console.error("Erro ao cadastrar livro:", error);
+                    console.error("Erro ao cadastrar o livro:", error);
+                    alert("Erro ao cadastrar livro. Verifique os dados e tente novamente.");
                 }
             }
 
